@@ -25,7 +25,7 @@
 #define	 KPD_NO_PRESSED_KEY		0xff
 
 
-#define KPD_ARR_VAL		{{7,8,9,'/'},{4,5,6,'*'},{1,2,3,'-'},{0,0,'=','+'}}
+#define KPD_ARR_VAL		{{1,2,3,'/'},{4,5,6,'*'},{7,8,9,'-'},{'@',0,'=','+'}}
 
 
 #endif

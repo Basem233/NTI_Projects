@@ -57,9 +57,9 @@ void CLCD_voidInit(void)
 void CLCD_voidInit4_bit(void)
 {
 	_delay_ms(40);
-	/*Set 4 bit mode
+	Set 4 bit mode
 	CLCD_voidSendCommand4_bit(0b0010);
-	/*Function Set
+	Function Set
 	CLCD_voidSendCommand4_bit(0b00101000);
 	_delay_us(45);
 	//set display on/off control
@@ -122,25 +122,25 @@ void CLCD_voidSendCommand(u8 Copy_u8Command)
 /*
 void CLCD_voidSendCommand4_bit(u8 Copy_u8Command)
 {
-	/*SET RS Pin to LOW For command
+	SET RS Pin to LOW For command
 	DIO_u8SetPinValue(CLCD_CONTROL_PORT,CLCD_RS_PIN,DIO_u8PIN_LOW);
 
-	/*Send Higher data
+	Send Higher data
 	DIO_u8SetPinValue(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_u8PIN_HIGH);
 	_delay_ms(4);
 	u16 datah=((Copy_u8Command & 0x70)>>4) | ((Copy_u8Command & 0x80)>>3);
 	DIO_u8SetPortValue(CLCD_DATA_PORT,datah);
-	/*Send Enable Pulse
+	Send Enable Pulse
 
 	DIO_u8SetPinValue(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_u8PIN_LOW);
 	_delay_ms(4);
 
-	/*Send Lower data
+	Send Lower data
 	DIO_u8SetPinValue(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_u8PIN_HIGH);
 	_delay_ms(4);
 	u16 datal=(Copy_u8Command & 0x07) | ((Copy_u8Command & 0x08)<<1);
 	DIO_u8SetPortValue(CLCD_DATA_PORT,datal);
-	/*Send Enable Pulse
+	Send Enable Pulse
 
 	DIO_u8SetPinValue(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_u8PIN_LOW);
 	_delay_ms(4);
@@ -196,25 +196,25 @@ void CLCD_voidSendData(u8 Copy_u8Data)
 /*
 void CLCD_voidSendData4_bit(u8 Copy_u8Data)
 {
-	/*SET RS Pin to HIGH For Data
+	SET RS Pin to HIGH For Data
 	DIO_u8SetPinValue(CLCD_CONTROL_PORT,CLCD_RS_PIN,DIO_u8PIN_HIGH);
 
-	/*Send Higher data
+	Send Higher data
 	DIO_u8SetPinValue(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_u8PIN_HIGH);
 	_delay_ms(4);
 	u16 datah=((Copy_u8Data & 0x70)>>4) | ((Copy_u8Data & 0x80)>>3);
 	DIO_u8SetPortValue(CLCD_DATA_PORT,datah);
-	/*Send Enable Pulse
+	Send Enable Pulse
 
 	DIO_u8SetPinValue(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_u8PIN_LOW);
 	_delay_ms(4);
 
-	/*Send Lower data
+	Send Lower data
 	DIO_u8SetPinValue(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_u8PIN_HIGH);
 	_delay_ms(4);
 	u16 datal=(Copy_u8Data & 0x07) | ((Copy_u8Data & 0x08)<<1);
 	DIO_u8SetPortValue(CLCD_DATA_PORT,datal);
-	/*Send Enable Pulse
+	Send Enable Pulse
 
 	DIO_u8SetPinValue(CLCD_CONTROL_PORT,CLCD_E_PIN,DIO_u8PIN_LOW);
 	_delay_ms(4);

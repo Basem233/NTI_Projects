@@ -30,47 +30,47 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 LSS += \
-NTI_KPD.lss \
+NTI_Calcu.lss \
 
 FLASH_IMAGE += \
-NTI_KPD.hex \
+NTI_Calcu.hex \
 
 SIZEDUMMY += \
 sizedummy \
 
 
 # All Target
-all: NTI_KPD.elf secondary-outputs
+all: NTI_Calcu.elf secondary-outputs
 
 # Tool invocations
-NTI_KPD.elf: $(OBJS) $(USER_OBJS)
+NTI_Calcu.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: AVR C Linker'
-	avr-gcc -Wl,-Map,NTI_KPD.map -mmcu=atmega32 -o "NTI_KPD.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	avr-gcc -Wl,-Map,NTI_Calcu.map -mmcu=atmega32 -o "NTI_Calcu.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
-NTI_KPD.lss: NTI_KPD.elf
+NTI_Calcu.lss: NTI_Calcu.elf
 	@echo 'Invoking: AVR Create Extended Listing'
-	-avr-objdump -h -S NTI_KPD.elf  >"NTI_KPD.lss"
+	-avr-objdump -h -S NTI_Calcu.elf  >"NTI_Calcu.lss"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-NTI_KPD.hex: NTI_KPD.elf
+NTI_Calcu.hex: NTI_Calcu.elf
 	@echo 'Create Flash image (ihex format)'
-	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex NTI_KPD.elf  "NTI_KPD.hex"
+	-avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex NTI_Calcu.elf  "NTI_Calcu.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-sizedummy: NTI_KPD.elf
+sizedummy: NTI_Calcu.elf
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega32 NTI_KPD.elf
+	-avr-size --format=avr --mcu=atmega32 NTI_Calcu.elf
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) NTI_KPD.elf
+	-$(RM) $(FLASH_IMAGE)$(ELFS)$(OBJS)$(ASM_DEPS)$(S_DEPS)$(SIZEDUMMY)$(S_UPPER_DEPS)$(LSS)$(C_DEPS) NTI_Calcu.elf
 	-@echo ' '
 
 secondary-outputs: $(LSS) $(FLASH_IMAGE) $(SIZEDUMMY)
